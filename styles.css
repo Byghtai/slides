@@ -1859,6 +1859,45 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+.layer-label {
+    fill: #374151;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+}
+
+.layer-label-group {
+    transition: all 0.3s ease;
+}
+
+.layer-label-group:hover rect {
+    opacity: 0.15 !important;
+}
+
+/* Evidence Cards */
+.evidence-group {
+    transition: all 0.3s ease;
+}
+
+.evidence-group:hover rect[fill="white"] {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+}
+
+.evidence-group:hover rect[opacity="0.1"] {
+    opacity: 0.15 !important;
+}
+
+.evidence-group text {
+    transition: all 0.3s ease;
+}
+
+.evidence-group:hover text {
+    font-weight: 600;
+}
+
+
+
 /* Hover Effects */
 .standard-node {
     cursor: pointer;
