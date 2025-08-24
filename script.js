@@ -888,12 +888,14 @@ class SlidePresentation {
         
         const standards = [
             { name: 'ISO 27001', color: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', shadow: 'rgba(102, 126, 234, 0.4)' },
+            { name: 'ISO 9001', color: 'linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)', shadow: 'rgba(6, 182, 212, 0.4)' },
             { name: 'BSI C5', color: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', shadow: 'rgba(16, 185, 129, 0.4)' },
             { name: 'DORA', color: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)', shadow: 'rgba(245, 158, 11, 0.4)' },
-            { name: 'NIS-2', color: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)', shadow: 'rgba(239, 68, 68, 0.4)' },
-            { name: 'GDPR', color: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)', shadow: 'rgba(139, 92, 246, 0.4)' },
-            { name: 'SOC 2', color: 'linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)', shadow: 'rgba(6, 182, 212, 0.4)' },
-            { name: 'PCI DSS', color: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)', shadow: 'rgba(249, 115, 22, 0.4)' }
+            { name: 'NIS-2', color: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)', shadow: 'rgba(139, 92, 246, 0.4)' },
+            { name: 'AI Act', color: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)', shadow: 'rgba(249, 115, 22, 0.4)' },
+            { name: 'GDPR', color: 'linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)', shadow: 'rgba(6, 182, 212, 0.4)' },
+            { name: 'SOC 2', color: 'linear-gradient(135deg, #10b981 0%, #059669 100%)', shadow: 'rgba(16, 185, 129, 0.4)' },
+            { name: 'PCI DSS', color: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)', shadow: 'rgba(139, 92, 246, 0.4)' }
         ];
         
         let currentIndex = 0;
@@ -945,8 +947,14 @@ class SlidePresentation {
         // Start with a subtle glow animation
         rotatingPill.style.animation = 'pillGlow 4s ease-in-out infinite';
         
-        // Start rotation cycle with more consistent timing
-        this.standardRotationInterval = setInterval(rotateStandard, 3000); // Increased from 2500ms to 3000ms
+        // Start first rotation after a shorter delay, then use regular interval
+        setTimeout(() => {
+            if (document.getElementById('rotating-pill')) {
+                rotateStandard();
+                // Start regular rotation cycle
+                this.standardRotationInterval = setInterval(rotateStandard, 3000);
+            }
+        }, 1500); // First change after 1.5s instead of 3s
     }
     
     stopStandardRotation() {
