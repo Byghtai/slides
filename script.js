@@ -1046,7 +1046,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (scheduleDemo) {
         scheduleDemo.addEventListener('click', () => {
-            window.open('https://byght.ai', '_blank');
+            window.open('https://calendly.com/byght/demo-byght-ai', '_blank');
         });
     }
     
